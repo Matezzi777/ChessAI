@@ -6,7 +6,9 @@ RM = rm -rf
 NAME = chessAI
 
 #FILES
-SRCS = main.c
+SRCS = main.c \
+		init.c \
+		display.c
 OBJS = $(SRCS:.c=.o)
 
 #COLORS

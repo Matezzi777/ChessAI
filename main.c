@@ -2,6 +2,8 @@
 
 int	main(void)
 {
-	function_a();
-	function_b();
+	char	**board;
+
+	board = init_board();
+	display_board(board);
 }

@@ -1,9 +1,12 @@
 #ifndef CHESS_H
 # define CHESS_H
 
-# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <string.h>
 
-void	function_a(void);
-void	function_b(void);
+char	**init_board(void);
+void	display_piece(char piece);
+void	display_board(char **board);
 
 #endif
