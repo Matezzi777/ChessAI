@@ -6,6 +6,7 @@ void	display_board(char **board)
 	int	j;
 
 	i = 7;
+	clear_console();
 	write(1, "\n", 1);
 	while (i > -1)
 	{
@@ -59,4 +60,9 @@ void	display_piece(char piece)
 	else
 		symbol = "?";
 	write(1, symbol, strlen(symbol));
+}
+
+void	clear_console(void)
+{
+	write(1, "\033[2J\033[H", 7);
 }

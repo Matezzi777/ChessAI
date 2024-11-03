@@ -8,7 +8,8 @@ NAME = chessAI
 #FILES
 SRCS = main.c \
 		init.c \
-		display.c
+		display.c \
+		move.c
 OBJS = $(SRCS:.c=.o)
 
 #COLORS
@@ -34,3 +35,5 @@ clean:
 	$(RM) *.o
 
 re: fclean all
+
+.PHONY: all fclean clean re
