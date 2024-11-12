@@ -1,15 +1,16 @@
 #COMPILING
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-INCLUDES = -I/usr/include -I.
+INCLUDES = -I/usr/include -I. -Imlx_linux -O3
+MLX = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 RM = rm -rf
 NAME = chessAI
 
 #FILES
 SRCS = main.c \
 		init.c \
-		display.c \
-		move.c
+		ui.c \
+		ui_utils.c
 OBJS = $(SRCS:.c=.o)
 
 #COLORS
@@ -22,7 +23,7 @@ END = \033[0m
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $@
+	$(CC) $(CFLAGS) $(OBJS) $(MLX) -o $@
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@

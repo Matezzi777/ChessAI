@@ -1,6 +1,6 @@
 #include "chess.h"
 
-char	**init_board(void)
+char	**board_init(void)
 {
 	char	**board;
 	int		i;
