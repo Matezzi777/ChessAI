@@ -19,7 +19,7 @@ typedef struct	s_data
 //init.c
 char	**board_init(void);
 //ui.c
-void	draw_board(t_data *image, char **board);
+void	draw_board(void *mlx, void *window, t_data *image, char **board);
 //ui_utils.c
 void	put_pixel(t_data *data, int x, int y, int color);
 void	draw_line(t_data *image, int x, int y, int length, bool axis, int color);

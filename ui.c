@@ -1,11 +1,61 @@
 #include "chess.h"
 
-void	place_pieces(char **board)
+void	place_piece(void *mlx, void *window, int x, int y, char piece)
 {
-	(void)board;
+	char	*path;
+	void	*piece_img;
+	int		width;
+	int		height;
+
+	(void)x;
+	(void)y;
+	if (piece == ' ')
+		return ;
+	if (piece == 'K')
+		path = "./pieces/White_King.xpm";
+	else if (piece == 'Q')
+		path = "./pieces/White_Queen.xpm";
+	else if (piece == 'B')
+		path = "./pieces/White_Bishop.xpm";
+	else if (piece == 'N')
+		path = "./pieces/White_Knight.xpm";
+	else if (piece == 'R')
+		path = "./pieces/White_Rook.xpm";
+	else if (piece == 'P')
+		path = "./pieces/White_Pawn.xpm";
+	else if (piece == 'k')
+		path = "./pieces/Black_King.xpm";
+	else if (piece == 'q')
+		path = "./pieces/Black_Queen.xpm";
+	else if (piece == 'b')
+		path = "./pieces/Black_Bishop.xpm";
+	else if (piece == 'n')
+		path = "./pieces/Black_Knight.xpm";
+	else if (piece == 'r')
+		path = "./pieces/Black_Rook.xpm";
+	else if (piece == 'p')
+		path = "./pieces/Black_Pawn.xpm";
+	else
+		path = "";
+	piece_img = mlx_xpm_file_to_image(mlx, path, &width, &height);
+	mlx_put_image_to_window(mlx, window, &piece_img, 200, 200);
 }
 
-void	draw_board(t_data *image, char **board)
+void	place_all_pieces(void *mlx, void *window, char **board)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < 8)
+	{
+		j = -1;
+		while (++j < 8)
+			place_piece(mlx, window, i, j, board[i][j]);
+	}
+}
+
+void	draw_board(void *mlx, void *window, t_data *image, char **board)
 {
 	draw_background(image, 0x000f3b14);
 	draw_line(image, 50, 50, 800, false, 0x00000000);
@@ -84,5 +134,5 @@ void	draw_board(t_data *image, char **board)
 	draw_rectangle(image, 550, 750, 650, 850, 0x008F6B5A);
 	draw_rectangle(image, 650, 750, 750, 850, 0x0040261A);
 	draw_rectangle(image, 750, 750, 850, 850, 0x008F6B5A);
-	place_pieces(board);
+	place_all_pieces(mlx, window, board);
 }
